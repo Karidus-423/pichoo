@@ -36,7 +36,4 @@ bool InitApp(AppState *app) {
   return true;
 }
 
-void DenitApp(AppState *app) {
-  SDL_DestroyRenderer(app->rndr);
-  SDL_DestroyWindow(app->win);
-}
+void DenitApp(AppState *app) { SDL_free(app); }
