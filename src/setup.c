@@ -1,5 +1,6 @@
 #include "origin.h"
 #include <SDL3/SDL_render.h>
+#include <SDL3/SDL_video.h>
 
 bool InitApp(AppState *app) {
   if (!SDL_Init(SDL_INIT_VIDEO)) {
@@ -36,4 +37,7 @@ bool InitApp(AppState *app) {
   return true;
 }
 
-void DenitApp(AppState *app) { SDL_free(app); }
+void DenitApp(AppState *app) {
+  SDL_DestroyRenderer(app->rndr);
+  SDL_DestroyWindow(app->win);
+}

@@ -5,6 +5,7 @@
 #include <SDL3/SDL_init.h>
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL_oldnames.h>
+#include <SDL3/SDL_rect.h>
 #include <SDL3/SDL_render.h>
 #include <SDL3/SDL_video.h>
 
@@ -19,7 +20,14 @@ typedef struct AppState {
   SDL_Event event;
 } AppState;
 
+typedef struct {
+  int size;
+  SDL_FPoint pos;
+  SDL_Vertex *vertices;
+} Polygon;
+
 bool InitApp(AppState *app);
 void DenitApp(AppState *app);
 void HandleEvents(AppState *app);
-void DrawApp(AppState *app);
+void DrawApp(AppState *app, Polygon obj, float theta);
+Polygon BuildPolygon(int vertices);
